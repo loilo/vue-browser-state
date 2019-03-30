@@ -15,6 +15,39 @@ It features reactive properties representing:
 - [URL Anchor](#url-anchor)
 - [Browser Language](#browser-language)
 
+## Motivation
+
+Tracking browser state can be tiring since you have to declare a data property, set up an event listener, hold a reference to the event handler and detach it on component destruction.
+
+This package contains some common browser states and makes using them as reactive properties easy.
+
+See this example which outputs the current size of the browser viewport:
+
+```vue
+<template>
+  <div>
+    Your browser viewport dimensions are {{ size[0] }}x{{ size[1] }} pixels.
+  </div>
+</template>
+
+<script>
+import reactivator from 'vue-reactivator'
+import { viewportSize } from 'vue-browser-state'
+
+export default {
+  mixins: [
+    reactivator({
+      size: viewportSize
+    })
+  ]
+}
+</script>
+```
+
+> **See it in action**
+>
+> You can take a look at the example above [in CodeSandbox](https://codesandbox.io/s/nn5vj1100l). Play around a little bit and resize the preview window, and you will see the numbers update immediately.
+
 ## Installation
 
 Vue Browser State is available on npm:
@@ -47,34 +80,9 @@ Want to use it in the browser directly? Try unpkg:
 
 ## Usage
 
-See how to use implementations with Reactivator in the [Reactivator docs](https://github.com/Loilo/vue-reactivator#usage).
+See how to use implementations with Reactivator in the [example above](#motivation) or in the [Reactivator docs](https://github.com/Loilo/vue-reactivator#usage).
 
-### Example
-
-```js
-import reactivator from 'vue-reactivator'
-
-// This package is tree-shakeable when using a bundler like webpack, this means it
-// will eliminate every implementation besides `online` in the resulting bundle
-import { viewportSize } from 'vue-browser-state'
-
-new Vue({
-  el: '#app',
-  mixins: [reactivator({ viewportSize })],
-  computed: {
-    width() {
-      return this.viewportSize[0]
-    },
-    height() {
-      return this.viewportSize[1]
-    }
-  }
-})
-```
-
-### Implementations
-
-#### Viewport Size
+### Viewport Size
 
 ```js
 import { viewportSize } from 'vue-browser-state'
@@ -84,7 +92,7 @@ The size of the viewport as a `[width, height]` array, equals `[window.innerWidt
 
 **SSR value:** `undefined`
 
-#### Scroll Position
+### Scroll Position
 
 ```js
 import { pageScroll } from 'vue-browser-state'
@@ -94,7 +102,7 @@ The scroll position on the page as an `[x, y]` array, equals `[window.scrollX, w
 
 **SSR value:** `[0, 0]`
 
-#### Mouse Position
+### Mouse Position
 
 ```js
 import { mousePosition } from 'vue-browser-state'
@@ -106,7 +114,7 @@ The mouse position as an `[x, y]` array, relative to the document root.
 
 > **Attention!** This implementation has no initial value as it can only be read when first moving the mouse.
 
-#### Internet Connection
+### Internet Connection
 
 ```js
 import { online } from 'vue-browser-state'
@@ -116,7 +124,7 @@ Whether the browser is currently connected to the internet (via [`navigator.onLi
 
 **SSR value:** `true`
 
-#### Ready State
+### Ready State
 
 ```js
 import { readyState } from 'vue-browser-state'
@@ -126,7 +134,7 @@ The loading state of the current document, as represented by [`document.readySta
 
 **SSR value:** `"loading"`
 
-#### Page Visibility
+### Page Visibility
 
 ```js
 import { visible } from 'vue-browser-state'
@@ -136,7 +144,7 @@ Whether or not the page is currently visible, according to [`document.hidden`](h
 
 **SSR value:** `true`
 
-#### URL Anchor
+### URL Anchor
 
 ```js
 import { hash } from 'vue-browser-state'
@@ -146,7 +154,7 @@ The anchor attached to the current URL (without the leading `#`).
 
 **SSR value:** `""`
 
-#### Browser Language
+### Browser Language
 
 ```js
 import { language } from 'vue-browser-state'
