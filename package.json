@@ -1,0 +1,56 @@
+{
+  "name": "vue-browser-state",
+  "version": "1.0.0",
+  "description": "Various browser-related implementations for vue-reactivator",
+  "keywords": [
+    "browser",
+    "hash",
+    "language",
+    "mouse position",
+    "online",
+    "reactivator",
+    "reactive",
+    "ready",
+    "resize",
+    "scroll",
+    "size",
+    "state",
+    "viewport",
+    "visible",
+    "vue"
+  ],
+  "homepage": "https://github.com/Loilo/vue-browser-state#readme",
+  "bugs": {
+    "url": "https://github.com/Loilo/vue-browser-state/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Loilo/vue-browser-state.git"
+  },
+  "license": "MIT",
+  "author": "Florian Reuschel <florian@loilo.de>",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/browser-state.common.js",
+  "umd:main": "dist/browser-state.umd.js",
+  "unpkg": "dist/browser-state.umd.js",
+  "module": "dist/browser-state.esm.js",
+  "scripts": {
+    "build": "del dist && concurrently \"rollup --config build/rollup.esm.js\" \"rollup --config build/rollup.common.js\" \"rollup --config build/rollup.umd.js\"",
+    "prepublishOnly": "npm test",
+    "test": "eslint src"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "del-cli": "^1.1.0",
+    "eslint": "^5.15.3",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.16.4",
+    "rollup": "^1.7.4",
+    "rollup-plugin-terser": "^4.0.4"
+  },
+  "peerDependencies": {
+    "vue-reactivator": "^1.0.0"
+  }
+}
