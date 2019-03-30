@@ -20,6 +20,7 @@ It features reactive properties representing:
 Vue Browser State is available on npm:
 
 ```bash
+npm install vue-reactivator
 npm install vue-browser-state
 ```
 
@@ -38,6 +39,7 @@ import * as browserState from 'vue-browser-state'
 Want to use it in the browser directly? Try unpkg:
 
 ```html
+<script src="https://unpkg.com/vue-reactivator"></script>
 <script src="https://unpkg.com/vue-browser-state"></script>
 ```
 
@@ -47,16 +49,32 @@ Want to use it in the browser directly? Try unpkg:
 
 See how to use implementations with Reactivator in the [Reactivator docs](https://github.com/Loilo/vue-reactivator#usage).
 
-Note that this package is tree-shakeable when using a bundler like webpack:
+### Example
 
 ```js
-// Will eliminate every implementation besides `online` in the resulting bundle
-import { online } from 'vue-browser-state'
+import reactivator from 'vue-reactivator'
+
+// This package is tree-shakeable when using a bundler like webpack, this means it
+// will eliminate every implementation besides `online` in the resulting bundle
+import { viewportSize } from 'vue-browser-state'
+
+new Vue({
+  el: '#app',
+  mixins: [reactivator({ viewportSize })],
+  computed: {
+    width() {
+      return this.viewportSize[0]
+    },
+    height() {
+      return this.viewportSize[1]
+    }
+  }
+})
 ```
 
-The following implementations are available:
+### Implementations
 
-### Viewport Size
+#### Viewport Size
 
 ```js
 import { viewportSize } from 'vue-browser-state'
@@ -66,7 +84,7 @@ The size of the viewport as a `[width, height]` array, equals `[window.innerWidt
 
 **SSR value:** `undefined`
 
-### Scroll Position
+#### Scroll Position
 
 ```js
 import { pageScroll } from 'vue-browser-state'
@@ -76,7 +94,7 @@ The scroll position on the page as an `[x, y]` array, equals `[window.scrollX, w
 
 **SSR value:** `[0, 0]`
 
-### Mouse Position
+#### Mouse Position
 
 ```js
 import { mousePosition } from 'vue-browser-state'
@@ -88,7 +106,7 @@ The mouse position as an `[x, y]` array, relative to the document root.
 
 > **Attention!** This implementation has no initial value as it can only be read when first moving the mouse.
 
-### Internet Connection
+#### Internet Connection
 
 ```js
 import { online } from 'vue-browser-state'
@@ -98,7 +116,7 @@ Whether the browser is currently connected to the internet (via [`navigator.onLi
 
 **SSR value:** `true`
 
-### Ready State
+#### Ready State
 
 ```js
 import { readyState } from 'vue-browser-state'
@@ -108,7 +126,7 @@ The loading state of the current document, as represented by [`document.readySta
 
 **SSR value:** `"loading"`
 
-### Page Visibility
+#### Page Visibility
 
 ```js
 import { visible } from 'vue-browser-state'
@@ -118,7 +136,7 @@ Whether or not the page is currently visible, according to [`document.hidden`](h
 
 **SSR value:** `true`
 
-### URL Anchor
+#### URL Anchor
 
 ```js
 import { hash } from 'vue-browser-state'
@@ -128,7 +146,7 @@ The anchor attached to the current URL (without the leading `#`).
 
 **SSR value:** `""`
 
-### Browser Language
+#### Browser Language
 
 ```js
 import { language } from 'vue-browser-state'
