@@ -139,17 +139,6 @@ typings/
 # Ignore all local history of files
 .history
 
-### Vue ###
-# gitignore template for Vue.js projects
-#
-# Recommended template: Node.gitignore
-
-# TODO: where does this rule come from?
-docs/_book
-
-# TODO: where does this rule come from?
-test/
-
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
