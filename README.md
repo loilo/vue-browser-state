@@ -1,6 +1,6 @@
 # Vue Browser State
 
-[![npm](https://img.shields.io/npm/v/vue-browser-state.svg)](https://www.npmjs.com/package/vue-browser-state)
+[![npm](https://badgen.net/npm/v/vue-browser-state)](https://www.npmjs.com/package/vue-browser-state)
 
 Vue Browser State is a collection of tiny browser-related implementations (around 150 bytes minified & gzipped each) for [`vue-reactivator`](https://npmjs.com/package/vue-reactivator).
 
