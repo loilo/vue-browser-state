@@ -1,6 +1,6 @@
 {
   "name": "vue-browser-state",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Various browser-related implementations for vue-reactivator",
   "keywords": [
     "browser",
