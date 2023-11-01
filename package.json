@@ -54,7 +54,7 @@
     "rollup-plugin-terser": "^7.0.0"
   },
   "peerDependencies": {
-    "vue-reactivator": "^2.0.0"
+    "vue-reactivator": "^2.0.0||^3.0.0"
   },
   "engines": {
     "node": ">= 12.0.0"
