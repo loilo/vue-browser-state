@@ -41,7 +41,7 @@
     "build:cjs": "rollup --config build/rollup.common.js",
     "build:umd": "rollup --config build/rollup.umd.js",
     "build": "del dist && run-p build:*",
-    "prepublishOnly": "npm test",
+    "prepublishOnly": "npm build && npm test",
     "test": "eslint src"
   },
   "devDependencies": {
